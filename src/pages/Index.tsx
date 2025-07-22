@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Shield, Wifi, Phone, Gift, AlertTriangle } from 'lucide-react';
+import { Shield, Wifi, Phone, Gift, AlertTriangle, Star, Clock, Users, Check } from 'lucide-react';
 
 const Index = () => {
   const [mobileNumber, setMobileNumber] = useState('');
@@ -20,160 +20,251 @@ const Index = () => {
   };
 
   const telecomLogos = [
-    { name: 'Jio', color: 'bg-blue-600' },
-    { name: 'Airtel', color: 'bg-red-500' },
-    { name: 'Vi', color: 'bg-purple-600' },
-    { name: 'BSNL', color: 'bg-green-600' }
+    { name: 'Jio', color: 'bg-gradient-to-r from-blue-600 to-blue-700', textColor: 'text-white' },
+    { name: 'Airtel', color: 'bg-gradient-to-r from-red-500 to-red-600', textColor: 'text-white' },
+    { name: 'Vi', color: 'bg-gradient-to-r from-purple-600 to-purple-700', textColor: 'text-white' },
+    { name: 'BSNL', color: 'bg-gradient-to-r from-green-600 to-green-700', textColor: 'text-white' }
+  ];
+
+  const features = [
+    { icon: Gift, text: 'Instant Activation' },
+    { icon: Shield, text: '100% Secure' },
+    { icon: Star, text: 'Premium Benefits' },
+    { icon: Check, text: 'Verified Offer' }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-4">
       {/* Educational Warning Banner */}
-      <div className="fixed top-0 left-0 right-0 bg-red-600 text-white text-center py-2 px-4 z-50 text-sm font-medium">
-        <Shield className="inline-block w-4 h-4 mr-2" />
-        EDUCATIONAL DEMO - SCAM AWARENESS SEMINAR
+      <div className="fixed top-0 left-0 right-0 bg-red-600 text-white text-center py-3 px-4 z-50 text-sm font-semibold shadow-lg">
+        <div className="flex items-center justify-center gap-2">
+          <Shield className="w-4 h-4" />
+          <span>EDUCATIONAL DEMO - SCAM AWARENESS SEMINAR</span>
+        </div>
       </div>
 
-      <div className="pt-12 max-w-md mx-auto">
-        {/* Main Container with Animation */}
-        <Card className="animate-fade-in shadow-2xl border-0 overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-center p-6">
-            <div className="flex items-center justify-center mb-2">
-              <Gift className="w-8 h-8 mr-2 animate-pulse" />
-              <Wifi className="w-8 h-8" />
-            </div>
-            <CardTitle className="text-2xl font-bold uppercase tracking-wide">
-              FREE RECHARGE VOUCHER
-            </CardTitle>
-            <p className="text-orange-100 font-medium">EXCLUSIVE OFFER</p>
-          </CardHeader>
-
-          <CardContent className="p-6 bg-white">
-            {/* Offer Text with Animation */}
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-2 animate-pulse">
-                Get 3 to 6 Months Free Recharge! 🎉
-              </h2>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Enter your mobile number and OTP to claim this exclusive offer from top Indian telecom providers.
-              </p>
-            </div>
-
-            {/* Telecom Logos */}
-            <div className="mb-6">
-              <p className="text-center text-gray-500 text-xs mb-3">Supported Networks</p>
-              <div className="grid grid-cols-2 gap-3">
-                {telecomLogos.map((logo, index) => (
-                  <div
-                    key={logo.name}
-                    className={`${logo.color} text-white rounded-lg p-3 text-center font-bold text-sm hover:scale-105 transition-transform`}
-                  >
-                    {logo.name}
+      <div className="pt-16 max-w-lg mx-auto">
+        {/* Main Container with Professional Design */}
+        <div className="animate-fade-in">
+          <Card className="shadow-2xl border-0 overflow-hidden bg-white/95 backdrop-blur-sm">
+            <CardHeader className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white text-center p-8 relative">
+              <div className="absolute inset-0 bg-black/10"></div>
+              <div className="relative z-10">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="bg-white/20 rounded-full p-3 mr-3">
+                    <Gift className="w-8 h-8 text-white" />
                   </div>
-                ))}
+                  <div className="bg-white/20 rounded-full p-3">
+                    <Wifi className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <CardTitle className="text-3xl font-bold uppercase tracking-wide mb-2">
+                  Premium Recharge
+                </CardTitle>
+                <CardTitle className="text-2xl font-bold uppercase tracking-wide text-yellow-300">
+                  Exclusive Voucher
+                </CardTitle>
+                <p className="text-blue-100 font-medium mt-2">Limited Time Offer</p>
               </div>
-            </div>
+            </CardHeader>
 
-            {/* Urgency Badge */}
-            <div className="text-center mb-6">
-              <Badge variant="destructive" className="animate-pulse">
-                ⏰ Limited Time Offer - Only 24 Hours Left!
-              </Badge>
-            </div>
-
-            {/* Form */}
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Mobile Number
-                </label>
-                <Input
-                  type="tel"
-                  placeholder="Enter 10-digit mobile number"
-                  value={mobileNumber}
-                  onChange={(e) => setMobileNumber(e.target.value)}
-                  pattern="[0-9]{10}"
-                  maxLength={10}
-                  className="text-lg py-3 border-2 border-orange-200 focus:border-orange-500 rounded-lg"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-                  <Shield className="w-4 h-4 mr-2" />
-                  OTP (One Time Password)
-                </label>
-                <Input
-                  type="text"
-                  placeholder="Enter 6-digit OTP"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  pattern="[0-9]{6}"
-                  maxLength={6}
-                  className="text-lg py-3 border-2 border-orange-200 focus:border-orange-500 rounded-lg text-center tracking-widest font-mono"
-                />
-                <p className="text-xs text-gray-500 mt-1">
-                  * Enter the OTP sent to your mobile number
+            <CardContent className="p-8 bg-gradient-to-b from-white to-gray-50">
+              {/* Offer Section */}
+              <div className="text-center mb-8">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text">
+                  <h2 className="text-3xl font-bold mb-3 animate-pulse">
+                    Get 3-6 Months FREE! 🎉
+                  </h2>
+                </div>
+                <p className="text-gray-700 text-base leading-relaxed max-w-md mx-auto">
+                  Claim your exclusive recharge voucher from India's leading telecom providers. 
+                  Limited slots available - Act now!
                 </p>
               </div>
 
-              {/* Claim Button */}
-              <Button
-                onClick={handleClaimRecharge}
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
-              >
-                🎁 CLAIM FREE RECHARGE NOW!
-              </Button>
-            </div>
-
-            {/* Trust Indicators (Fake) */}
-            <div className="mt-6 text-center">
-              <div className="flex justify-center space-x-4 text-xs text-gray-500">
-                <span>✅ SSL Secured</span>
-                <span>✅ 1M+ Users</span>
-                <span>✅ Instant Process</span>
+              {/* Trust Indicators */}
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {features.map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-2 bg-green-50 p-3 rounded-lg border border-green-200">
+                    <feature.icon className="w-4 h-4 text-green-600" />
+                    <span className="text-sm font-medium text-green-800">{feature.text}</span>
+                  </div>
+                ))}
               </div>
-            </div>
 
-            {/* Educational Alert */}
-            {showAlert && (
-              <Alert className="mt-4 border-red-500 bg-red-50">
-                <AlertTriangle className="h-4 w-4 text-red-600" />
-                <AlertDescription className="text-red-800 font-medium">
-                  ⚠️ SCAM ALERT: This demonstrates how fraudulent sites look convincing!
-                </AlertDescription>
-              </Alert>
-            )}
-          </CardContent>
-        </Card>
+              {/* Stats Section */}
+              <div className="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="flex items-center justify-center mb-1">
+                      <Users className="w-4 h-4 text-blue-600 mr-1" />
+                      <span className="font-bold text-blue-800">2.5M+</span>
+                    </div>
+                    <p className="text-xs text-blue-600">Users</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center mb-1">
+                      <Star className="w-4 h-4 text-yellow-500 mr-1" />
+                      <span className="font-bold text-blue-800">4.9★</span>
+                    </div>
+                    <p className="text-xs text-blue-600">Rating</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-center mb-1">
+                      <Clock className="w-4 h-4 text-green-600 mr-1" />
+                      <span className="font-bold text-blue-800">24H</span>
+                    </div>
+                    <p className="text-xs text-blue-600">Left</p>
+                  </div>
+                </div>
+              </div>
 
-        {/* Educational Disclaimer */}
-        <div className="mt-6 bg-black bg-opacity-80 text-white p-4 rounded-lg text-center">
-          <div className="flex items-center justify-center mb-2">
-            <AlertTriangle className="w-5 h-5 mr-2 text-yellow-400" />
-            <span className="font-bold text-yellow-400">EDUCATIONAL DEMO</span>
+              {/* Telecom Logos */}
+              <div className="mb-6">
+                <p className="text-center text-gray-600 text-sm font-medium mb-4">Supported Networks</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {telecomLogos.map((logo, index) => (
+                    <div
+                      key={logo.name}
+                      className={`${logo.color} ${logo.textColor} rounded-xl p-4 text-center font-bold text-sm shadow-lg transform hover:scale-105 transition-all duration-200`}
+                    >
+                      <div className="text-lg mb-1">{logo.name}</div>
+                      <div className="text-xs opacity-90">✓ Verified</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Urgency Badge */}
+              <div className="text-center mb-6">
+                <Badge className="bg-red-100 text-red-800 border border-red-300 px-4 py-2 text-sm font-semibold animate-pulse">
+                  ⏰ Only 47 Vouchers Left - Hurry Up!
+                </Badge>
+              </div>
+
+              {/* Form */}
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+                    <Phone className="w-4 h-4 mr-2 text-blue-600" />
+                    Mobile Number
+                  </label>
+                  <Input
+                    type="tel"
+                    placeholder="Enter 10-digit mobile number"
+                    value={mobileNumber}
+                    onChange={(e) => setMobileNumber(e.target.value)}
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    className="text-lg py-4 border-2 border-gray-200 focus:border-blue-500 rounded-xl bg-white shadow-sm transition-all duration-200"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
+                    <Shield className="w-4 h-4 mr-2 text-green-600" />
+                    OTP Verification
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="Enter 6-digit OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    pattern="[0-9]{6}"
+                    maxLength={6}
+                    className="text-xl py-4 border-2 border-gray-200 focus:border-green-500 rounded-xl text-center tracking-widest font-mono bg-white shadow-sm transition-all duration-200"
+                  />
+                  <p className="text-xs text-gray-500 mt-2 text-center">
+                    * OTP will be sent to your registered mobile number
+                  </p>
+                </div>
+
+                {/* Claim Button */}
+                <Button
+                  onClick={handleClaimRecharge}
+                  className="w-full bg-gradient-to-r from-green-500 via-blue-500 to-purple-600 hover:from-green-600 hover:via-blue-600 hover:to-purple-700 text-white font-bold py-5 px-8 text-lg rounded-xl transform hover:scale-105 transition-all duration-300 shadow-xl animate-pulse-glow"
+                >
+                  <Gift className="w-5 h-5 mr-2" />
+                  CLAIM FREE RECHARGE NOW!
+                </Button>
+              </div>
+
+              {/* Professional Trust Indicators */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="flex justify-center items-center space-x-6 text-xs text-gray-600">
+                  <div className="flex items-center">
+                    <Shield className="w-3 h-3 mr-1 text-green-500" />
+                    <span>SSL Secured</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Users className="w-3 h-3 mr-1 text-blue-500" />
+                    <span>2.5M+ Users</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="w-3 h-3 mr-1 text-orange-500" />
+                    <span>Instant Process</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Educational Alert */}
+              {showAlert && (
+                <Alert className="mt-6 border-red-500 bg-red-50 animate-fade-in">
+                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertDescription className="text-red-800 font-medium">
+                    ⚠️ SCAM ALERT: This demonstrates how fraudulent sites look convincing!
+                  </AlertDescription>
+                </Alert>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Educational Disclaimer - Enhanced */}
+        <div className="mt-8 bg-gray-900 text-white p-6 rounded-xl shadow-xl">
+          <div className="flex items-center justify-center mb-3">
+            <AlertTriangle className="w-6 h-6 mr-2 text-yellow-400" />
+            <span className="font-bold text-yellow-400 text-lg">EDUCATIONAL DEMONSTRATION</span>
           </div>
-          <p className="text-sm leading-relaxed">
-            This is a demo page for educational purposes to demonstrate digital scams. 
-            <strong> Do not enter real personal information.</strong> 
-            Real scam sites use similar designs to steal your data!
+          <p className="text-sm leading-relaxed text-center text-gray-300">
+            This is a demo page created for educational purposes to demonstrate digital scams. 
+            <strong className="text-white"> Never enter real personal information on suspicious websites.</strong> 
+            Real scam sites use similar professional designs to steal your data!
           </p>
         </div>
 
-        {/* Additional Educational Content */}
-        <div className="mt-4 bg-white bg-opacity-90 p-4 rounded-lg">
-          <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-            <Shield className="w-4 h-4 mr-2 text-blue-600" />
-            How to Spot Scam Websites:
+        {/* Scam Awareness Tips - Professional Layout */}
+        <div className="mt-6 bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <h3 className="font-bold text-gray-800 mb-4 flex items-center text-lg">
+            <Shield className="w-5 h-5 mr-2 text-blue-600" />
+            How to Identify Scam Websites:
           </h3>
-          <ul className="text-sm text-gray-700 space-y-1">
-            <li>• Too-good-to-be-true offers</li>
-            <li>• Urgency tactics ("Limited time!")</li>
-            <li>• Asking for OTP/passwords</li>
-            <li>• Suspicious URLs</li>
-            <li>• Poor grammar/spelling</li>
-          </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+              <span className="text-sm text-gray-700">Too-good-to-be-true offers</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+              <span className="text-sm text-gray-700">Urgency tactics & time pressure</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+              <span className="text-sm text-gray-700">Requesting OTP/passwords</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+              <span className="text-sm text-gray-700">Suspicious URLs & domains</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+              <span className="text-sm text-gray-700">Poor grammar & spelling errors</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+              <span className="text-sm text-gray-700">Fake testimonials & reviews</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
